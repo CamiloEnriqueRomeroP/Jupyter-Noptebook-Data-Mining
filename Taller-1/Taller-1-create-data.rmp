@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="10.3.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.3.001" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="advanced_file_connectors:read_arff" compatibility="10.3.001" expanded="true" height="68" name="Read ARFF" width="90" x="246" y="34">
+        <parameter key="data_file" value="/Users/camilo/Library/CloudStorage/GoogleDrive-camiloeromerop@gmail.com/Mi unidad/Doctorado/Minería-de-datos/Taller-1/churn.arff"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="read_not_matching_values_as_missings" value="true"/>
+        <list key="data_set_meta_data_information"/>
+        <parameter key="attribute_names_already_defined" value="false"/>
+        <parameter key="decimal_character" value="."/>
+        <parameter key="grouped_digits" value="false"/>
+        <parameter key="grouping_character" value=","/>
+        <parameter key="infinity_representation" value=""/>
+      </operator>
+      <operator activated="true" class="write_csv" compatibility="10.3.001" expanded="true" height="82" name="Write CSV" width="90" x="447" y="34">
+        <parameter key="csv_file" value="/Users/camilo/Library/CloudStorage/GoogleDrive-camiloeromerop@gmail.com/Mi unidad/Doctorado/Minería-de-datos/Taller-1/churn.csv"/>
+        <parameter key="column_separator" value=";"/>
+        <parameter key="write_attribute_names" value="true"/>
+        <parameter key="quote_nominal_values" value="true"/>
+        <parameter key="format_date_attributes" value="true"/>
+        <parameter key="date_format" value="yyyy-MM-dd HH:mm:ss"/>
+        <parameter key="append_to_file" value="false"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <connect from_op="Read ARFF" from_port="output" to_op="Write CSV" to_port="input"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+    </process>
+  </operator>
+</process>
